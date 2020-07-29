@@ -1,0 +1,4 @@
+name: ForgeModDetecter
+version: ${project.version}
+main: net.ciebus.kokoa.forgemoddetecter.ForgeModDetecter
+api-version: 1.16
