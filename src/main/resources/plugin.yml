@@ -1,4 +1,12 @@
-name: ForgeModDetecter
+name: ForgeModDetector
 version: ${project.version}
-main: net.ciebus.kokoa.forgemoddetecter.ForgeModDetecter
-api-version: 1.16
+main: net.ciebus.kokoa.forgemoddetector.ForgeModDetector
+api-version: 1.15
+softdepend: [ProtocolLib]
+permissions:
+  forgemoddetector.admin:
+    description: Test
+commands:
+  mods:
+    description: modをしらべ
+    permission: forgemoddetector.admin
