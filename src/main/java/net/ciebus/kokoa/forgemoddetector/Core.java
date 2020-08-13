@@ -23,34 +23,12 @@ public class Core {
     }
 
     public void createPayloads() {
-        ArrayList<String> channels = new ArrayList<>();
-        /*
-        Iterator var2 = this.config.getEntities().iterator();
-
-        while(var2.hasNext()) {
-            CustomEntity entity = (CustomEntity)var2.next();
-            if (entity.getChannels() != null) {
-                channels.addAll(entity.getChannels());
-            }
-        }*/
-
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         DataOutputStream output = new DataOutputStream(stream);
-
-        //ModList packet
-        Iterator<String> var4;
         try {
             Utils.writeInt(output, 1);
             Utils.writeInt(output, 0);
-            Utils.writeInt(output, channels.size());
-            var4 = channels.iterator();
-
-            while(var4.hasNext()) {
-                String channel = var4.next();
-                Utils.writeString(output, channel.substring(0, channel.indexOf("|")));
-                Utils.writeString(output, channel.substring(channel.indexOf("|") + 1));
-            }
-
+            Utils.writeInt(output, 0);
             Utils.writeInt(output, 0);
         } catch (IOException var7) {
             var7.printStackTrace();
@@ -68,7 +46,7 @@ public class Core {
 
     public void onModUser(LibPlayer player, List<String> mods) {
         if (mods.size() == 1 && ((String)mods.get(0)).equals("fabric")) {
-            player.doLogger(player.getName() + " is attempting to join with a Fabric Client..");
+            player.doLogger(player.getName() + " is attempting to join with a Fabric Client.." + Arrays.toString(mods.toArray(new String[0])));
         } else {
             player.doLogger(player.getName() + " is attempting to join with the mods: " + Arrays.toString(mods.toArray(new String[0])));
         }
